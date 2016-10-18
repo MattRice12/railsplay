@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.order('LOWER(name)')
+    @categories = Category.includes(:products).order('LOWER(name)')
   end
 
   def show
